@@ -48,19 +48,15 @@ body{
 li {
     color:#ecf7f7;
     list-style: circle;
-    font-size: 1.2rem;
-    padding: 1.5rem 5rem;
-    /* text-transform: uppercase; */
+    font-size: 0.5rem;
+    padding: 1.5rem 1.5rem;
 }
 
 
 .about{
-    padding: 5em 5em;
+    padding: 5em 2em;
     display: flex;
-
-    /* justify-content: center; */
     height: 85vh;
-    /* width: 60vw; */
     margin: 0 auto;
 }
 
@@ -96,6 +92,15 @@ li {
 
     i:hover{
         font-size: 2rem;
+    }
+
+    li {
+        font-size: 1.2rem;
+        padding: 1.5rem 5rem;
+    }
+
+    .about{
+        padding: 5em 5em;
     }
 
 }
