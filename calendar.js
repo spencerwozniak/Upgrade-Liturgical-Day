@@ -1,6 +1,6 @@
-let fetchDate = async () => {
+let fetchDate = async (todaysDate) => {
     try{
-        let response = await fetch("http://calapi.inadiutorium.cz/api/v0/en/calendars/default/today");
+        let response = await fetch(`http://calapi.inadiutorium.cz/api/v0/en/calendars/default/${todaysDate}`);
 
         if(!response){
             let message = `Error: ${response.status}, ${response.statusText}`;
@@ -35,7 +35,16 @@ let getCelebrations = (celebrations) =>{
 }
 
 let renderDate = () => {
-    fetchDate().then((dateObject) =>{
+
+    // Obtains the local date of the host
+    let currentDate = new Date();
+    let cDay = currentDate.getDate();
+    let cMonth = currentDate.getMonth() + 1;
+    let cYear = currentDate.getFullYear();
+    let todaysDate = `${cYear}/${cMonth}/${cDay}`;
+
+
+    fetchDate(todaysDate).then((dateObject) =>{
         console.log(dateObject);
         console.log(dateObject.date);
         console.log(dateObject.weekday);
@@ -49,3 +58,6 @@ let renderDate = () => {
 }
 
 renderDate();
+
+//TODO: implement a calendar view
+// Create other pages
