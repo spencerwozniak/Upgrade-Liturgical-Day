@@ -29,7 +29,7 @@ let celebrationsLi = document.getElementById("celebrations");
 let getCelebrations = (celebrations) =>{
     celebrations.forEach(celebration => {
         let saint = document.createElement("li");
-        saint.innerHTML = celebration.title;
+        saint.innerHTML = `${celebration.rank}: ${celebration.title}`;
         celebrationsLi.append(saint);
     });
 }
@@ -48,7 +48,8 @@ let renderDate = () => {
         console.log(dateObject);
         console.log(dateObject.date);
         console.log(dateObject.weekday);
-        todaysDate.innerHTML = `Date: ${dateObject.date}`;
+        console.log(todaysDate);
+        todaysDate.innerHTML = `Date: <i>${dateObject.date}</i>`;
         weekday.innerHTML = ` Today is <i>${dateObject.weekday}</i>`;
         week.innerHTML = `Week <i>${dateObject.season_week}</i> of the`;
         season.innerHTML = `<i>${dateObject.season}</i> season`;
