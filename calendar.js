@@ -41,14 +41,13 @@ let renderDate = () => {
     let cDay = currentDate.getDate();
     let cMonth = currentDate.getMonth() + 1;
     let cYear = currentDate.getFullYear();
-    let todaysDate = `${cYear}/${cMonth}/${cDay}`;
+    let dateToday = `${cYear}/${cMonth}/${cDay}`;
 
 
-    fetchDate(todaysDate).then((dateObject) =>{
+    fetchDate(dateToday).then((dateObject) =>{
         console.log(dateObject);
         console.log(dateObject.date);
         console.log(dateObject.weekday);
-        console.log(todaysDate);
         todaysDate.innerHTML = `Date: <i>${dateObject.date}</i>`;
         weekday.innerHTML = ` Today is <i>${dateObject.weekday}</i>`;
         week.innerHTML = `Week <i>${dateObject.season_week}</i> of the`;

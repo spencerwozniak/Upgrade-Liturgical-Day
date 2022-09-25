@@ -50,6 +50,8 @@ li {
     list-style: circle;
     font-size: 0.5rem;
     padding: 1.5rem 1.5rem;
+    list-style: none;
+    text-transform: uppercase;
 }
 
 
@@ -73,6 +75,12 @@ li {
     display: none;
 }
 
+.list-summary{
+    text-transform: uppercase;
+    font-size: 1rem;
+    text-align: center;
+}
+
 @media (min-width: 30em){
     .header{
         font-size:1rem;
@@ -88,10 +96,6 @@ li {
 
     .about > h1 {
         font-size: 1.6rem;
-    }
-
-    i:hover{
-        font-size: 2rem;
     }
 
     li {
