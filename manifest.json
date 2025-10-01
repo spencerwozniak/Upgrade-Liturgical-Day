@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "New Liturgical Tab",
+  "version": "1.0",
+  "description": "Displays the Liturgical Calendar every time you open a new tab.",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "host_permissions": [
+    "https://calapi.inadiutorium.cz/*"
+  ],
+}
