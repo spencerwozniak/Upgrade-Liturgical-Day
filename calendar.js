@@ -1,9 +1,10 @@
 let fetchDate = async (todaysDate) => {
     try{
-        let response = await fetch(`http://calapi.inadiutorium.cz/api/v0/en/calendars/default/${todaysDate}`);
+        // Switched to HTTPS to avoid mixed-content issues
+        let response = await fetch(`https://calapi.inadiutorium.cz/api/v0/en/calendars/default/${todaysDate}`);
 
-        if(!response){
-            let message = `Error: ${response.status}, ${response.statusText}`;
+        if(!response || !response.ok){
+            let message = `Error: ${response?.status}, ${response?.statusText}`;
             let err = new Error(message);
             throw err;
         }
@@ -11,19 +12,16 @@ let fetchDate = async (todaysDate) => {
         const currentDate = await response.json();
         return currentDate;
 
-
     } catch (err){
         console.error(`Error: ${err}`);
     }
 }
-
 
 let todaysDate = document.getElementById("date");
 let weekday = document.getElementById("weekday");
 let week = document.getElementById("week");
 let season = document.getElementById("season");
 let celebrationsLi = document.getElementById("celebrations");
-
 
 // TODO: Implement another api that searches the listed saint celebration upon click
 let getCelebrations = (celebrations) =>{
@@ -35,29 +33,20 @@ let getCelebrations = (celebrations) =>{
 }
 
 let renderDate = () => {
-
-    // Obtains the local date of the host
     let currentDate = new Date();
     let cDay = currentDate.getDate();
     let cMonth = currentDate.getMonth() + 1;
     let cYear = currentDate.getFullYear();
     let dateToday = `${cYear}/${cMonth}/${cDay}`;
 
-
     fetchDate(dateToday).then((dateObject) =>{
-        console.log(dateObject);
-        console.log(dateObject.date);
-        console.log(dateObject.weekday);
+        if(!dateObject) return;
         todaysDate.innerHTML = `Date: <i>${dateObject.date}</i>`;
         weekday.innerHTML = ` Today is <i>${dateObject.weekday}</i>`;
         week.innerHTML = `Week <i>${dateObject.season_week}</i> of the`;
         season.innerHTML = `<i>${dateObject.season}</i> season`;
-
-        getCelebrations(dateObject.celebrations);
+        getCelebrations(dateObject.celebrations || []);
     });
 }
 
 renderDate();
-
-//TODO: implement a calendar view
-// Create other pages
