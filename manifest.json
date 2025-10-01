@@ -8,5 +8,5 @@
   },
   "host_permissions": [
     "https://calapi.inadiutorium.cz/*"
-  ],
+  ]
 }
